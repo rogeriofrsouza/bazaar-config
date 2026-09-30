@@ -15,3 +15,11 @@ spring:
               uri: lb://inventory-service
               predicates:
                 - Path=/api/inventory/**
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: catalog-service
+        url: /catalog-service/v3/api-docs
+      - name: inventory-service
+        url: /inventory-service/v3/api-docs
