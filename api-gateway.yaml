@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: catalog-service
+              uri: lb://catalog-service
+              predicates:
+                - Path=/api/products/**,/api/categories/**
+            - id: inventory-service
+              uri: lb://inventory-service
+              predicates:
+                - Path=/api/inventory/**
